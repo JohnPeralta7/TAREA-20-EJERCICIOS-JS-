@@ -3,7 +3,7 @@ class Ejercicios{
     
     divisores(numero){
         let divisores = [];
-        for (let i = 1; i <= numero; i++) {
+        for (let i = 1; i < numero; i++) {
           if (numero % i === 0) {
             divisores.push(i);
           }
@@ -27,41 +27,38 @@ class Ejercicios{
         for (let i = 0; i < divisores.length; i++) {
            suma_divisores += divisores[i];
         }
-        if (suma_divisores === numero){
+        if (suma_divisores == numero){
           return true;
         }
     
         return false;
     }
     
-    // *** 
+    // ***
     Ejercicio2() {
         let numero = document.getElementById("n1").value;
         let Es_perfecto = this.Es_numero_perfecto(numero);
         //console.log("¿El número es perfecto?:", Es_perfecto);
-        document.getElementById("Respuesta2").innerHTML = "El numero perfecto es..... : " + Es_perfecto;
+        document.getElementById("Respuesta2").innerHTML = "El numero es perfecto..... : " + Es_perfecto;
     }
     
     
     
     
     
-    // ***
+
     Es_primo(numero) {
-        if (numero <= 2) {
+        if (numero <= 1) {
           return false;
         }
     
-        for (let i = 2; i <= numero ; i++) {
-          if (numero % i === 0) {
+        for (let i = 2; i < numero ; i++) {
+          if (numero % i == 0) {
             return false;
           }
         }
-    
         return true;
     }
-
-
 
     Ejercicio3() {
         let numero = document.getElementById("n1").value;
@@ -73,20 +70,32 @@ class Ejercicios{
     
     
 
-    // ***
+    
     Son_primos_gemelos(numero1, numero2) {
-        if (numero1 === numero2) {
+        
+        
+        if (numero1 == numero2) {
+
             return false;
+
+        }else if(numero1 % 2==0 || numero2 % 2==0){
+
+            return false;
+
+        }else if(numero1 - numero2 == 2 || numero1 - numero2 == -2){
+        
+            return true;
         }
         return Es_primo(numero1) && Es_primo(numero2);
+
     }
 
     Ejercicio4(){
         let numero1 = document.getElementById("n1").value;
         let numero2 = document.getElementById("n2").value;
-        let son_gemelos = this.Son_primos_gemelos(numero1, numero2);
-        //console.log("¿Son primos gemelos?:", son_primos_gemelos);
-        document.getElementById("Respuesta4").innerHTML = "Son primos gemelos... " + son_gemelos;
+        let Son_gemelos = this.Son_primos_gemelos(numero1, numero2);
+        //console.log("¿Son primos gemelos?:", Son_primos_gemelos);
+        document.getElementById("Respuesta4").innerHTML = "Son primos gemelos... " + Son_gemelos;
     }
 
 
@@ -352,7 +361,7 @@ class Ejercicios{
     BASE2(b10){
         let array, div=0, res, ent, c = 0, x = 0, rr, cc = 0, array2, longi;
         array = [];
-        array2 = 0
+        array2 = "";
         while (div >= 0){
             if (c == 0) {
                 div = Math.trunc(b10/2);
@@ -382,7 +391,7 @@ class Ejercicios{
         b10 = document.getElementById("n1").value;
         result = this.BASE2(b10)
         document.getElementById("Respuesta15").innerHTML = "Base 10 : " + b10;
-        document.getElementById("Respuesta15").innerHTML = "Base 2 : " + result;
+        document.getElementById("Respuesta15").innerHTML += "<br>Base 2 : " + result;
     }
     
     
